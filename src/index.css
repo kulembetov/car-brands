@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: "Inter", system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  @apply flex items-center justify-center min-h-screen bg-gradient-to-br from-purple-900 to-indigo-900 p-6;
+}
+
+button {
+  @apply bg-gradient-to-r from-purple-700 to-indigo-700 text-white font-semibold rounded-lg px-4 py-2 transition-all duration-300 hover:scale-105 hover:shadow-lg;
+}

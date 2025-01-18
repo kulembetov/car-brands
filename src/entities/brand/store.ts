@@ -1,7 +1,7 @@
 import { supabase } from '@/app/supabase.ts';
 import { create } from 'zustand';
 import { Brand, CarStore } from '@/entities/brand/types.ts';
-import { cacheBrands, getCachedBrands } from './model.ts';
+import { cacheBrands, getCachedBrands } from '@/entities/brand/model.ts';
 
 export const useCarStore = create<CarStore>((set) => ({
   brands: [],

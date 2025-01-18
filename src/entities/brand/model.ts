@@ -1,18 +1,24 @@
 import { Brand } from '@/entities/brand/types.ts';
-import { openDB } from 'idb';
+import { IDBPDatabase, openDB } from 'idb';
 
 const DB_NAME = 'carBrandsDB';
 const STORE_NAME = 'carBrands';
+const DB_VERSION = 3;
 
-export const getDB = async () => {
-  return await openDB(DB_NAME, 1, {
-    upgrade(db) {
-      if (!db.objectStoreNames.contains(STORE_NAME)) {
-        db.createObjectStore(STORE_NAME, { keyPath: 'id' });
-        console.log(`IndexedDB store "${STORE_NAME}" created.`);
-      }
-    },
-  });
+let dbInstance: IDBPDatabase | null = null;
+
+export const getDB = async (): Promise<IDBPDatabase> => {
+  if (!dbInstance) {
+    dbInstance = await openDB(DB_NAME, DB_VERSION, {
+      upgrade(db) {
+        if (!db.objectStoreNames.contains(STORE_NAME)) {
+          db.createObjectStore(STORE_NAME, { keyPath: 'id' });
+          console.log(`IndexedDB store "${STORE_NAME}" created.`);
+        }
+      },
+    });
+  }
+  return dbInstance;
 };
 
 export const cacheBrands = async (brands: Brand[]) => {
@@ -23,11 +29,9 @@ export const cacheBrands = async (brands: Brand[]) => {
 
     await store.clear();
 
-    for (const brand of brands) {
-      await store.put(brand);
-    }
+    await Promise.all(brands.map((brand) => store.put(brand)));
 
-    await tx.done;
+    await tx.commit;
     console.log(`Cached ${brands.length} brands to IndexedDB.`);
   } catch (error) {
     console.error('Error caching brands in IndexedDB:', error);

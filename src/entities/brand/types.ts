@@ -5,6 +5,7 @@ export type Brand = {
   founded: number;
   popular_model: string;
   luxury_division: string;
+  createdAt: Date;
 };
 
 export type CarStore = {

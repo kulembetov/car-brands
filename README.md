@@ -26,17 +26,9 @@ IndexedDB is supported in **all modern browsers** and is a **game-changer** for 
 
 ---
 
-## Demo
-
-### Video
-
-[![Watch Demo](src/assets/img_3.png)](https://youtu.be/ErrKo0JPGcA)
-
-
-### Screenshots
+## Screenshots
+![img.png](src/assets/img.png)
 ![img_1.png](src/assets/img_1.png)
-![img_2.png](src/assets/img_2.png)
-
 ---
 
 ## Tech Stack
@@ -76,7 +68,8 @@ npm install
       country TEXT,
       founded INT,
       popular_model TEXT,
-      luxury_division TEXT
+      luxury_division TEXT,
+      created_at DATE
   );
   ```
 - **Add Supabase Credentials** in `.env`:
@@ -115,21 +108,22 @@ npm run dev
 
 ```
 car-brands/
-│── public/                 # Static assets (e.g., logo)
-│── src/                    # Main source code
-│   │── app/                # App-wide configurations
-│   │── entities/brand/     # Business logic (API, Zustand, IndexedDB)
-│   │── features/brand-list/# UI for displaying brands
-│   │── pages/              # Page components
-│   │── App.tsx             # Main App component
-│   │── main.tsx            # App entry point
-│── index.css               # Global Styles
-│── .gitignore              # Git ignore rules
-│── .env.example            # Environment variables
-│── package.json            # Dependencies & scripts
-│── tsconfig.json           # TypeScript configuration
-│── vite.config.ts          # Vite configuration
-│── README.md               # Project documentation
+│── public/                  # Static assets (e.g., logo)
+│── src/                     # Main source code
+│   │── app/                 # App-wide configurations
+│   │── assets/              # Images for README
+│   │── entities/brand/      # Business logic (API, Zustand, IndexedDB)
+│   │── features/brand-list/ # UI for displaying brands
+│   │── pages/               # Page components
+│   │── App.tsx              # Main App component
+│   │── main.tsx             # App entry point
+│── index.css                # Global Styles
+│── .gitignore               # Git ignore rules
+│── .env.example             # Environment variables
+│── package.json             # Dependencies & scripts
+│── tsconfig.json            # TypeScript configuration
+│── vite.config.ts           # Vite configuration
+│── README.md                # Project documentation
 ```
 
 ---
@@ -141,9 +135,8 @@ car-brands/
 Check **console logs** to compare Supabase and IndexedDB speeds:
 
 ```
-Supabase Fetch Time: 634ms
-IndexedDB Store Time: 14ms
-IndexedDB Fetch Time (Offline): 5ms
+Supabase Fetch Time: 209ms
+IndexedDB Store Time: 6ms
 ```
 
 IndexedDB significantly improves offline performance.

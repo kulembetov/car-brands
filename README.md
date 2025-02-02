@@ -27,8 +27,12 @@ IndexedDB is supported in **all modern browsers** and is a **game-changer** for 
 ---
 
 ## Screenshots
-![img.png](src/assets/img.png)
+
 ![img_1.png](src/assets/img_1.png)
+![img_2.png](src/assets/img_2.png)
+![img_3.png](src/assets/img_3.png)
+![img_4.png](src/assets/img_4.png)
+
 ---
 
 ## Tech Stack
@@ -39,6 +43,7 @@ IndexedDB is supported in **all modern browsers** and is a **game-changer** for 
 - [Supabase](https://supabase.com/) – Database & API
 - [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API) – Offline Storage
 - [TailwindCSS](https://tailwindcss.com/) – Styling
+- [Zod](https://zod.dev/) - Data Validation
 
 ---
 

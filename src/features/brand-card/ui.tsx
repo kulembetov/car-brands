@@ -1,7 +1,16 @@
 import { Brand } from "@/entities/brand/types.ts";
 import { formattedDate } from "@/utils/date.ts";
+import { useCarStore } from "@/entities/brand/store.ts";
 
-export function BrandCard({ brand }: { brand: Brand }) {
+export function BrandCard({
+  brand,
+  showDeleteButton,
+}: {
+  brand: Brand;
+  showDeleteButton: boolean;
+}) {
+  const { removeCar } = useCarStore();
+
   return (
     <ul
       key={brand.id}
@@ -19,16 +28,23 @@ export function BrandCard({ brand }: { brand: Brand }) {
           Popular Model:{" "}
           <span className="font-medium">{brand.popular_model}</span>
         </p>
-        <p className="text-gray-300">
-          Luxury Division:{" "}
-          <span className="font-medium">
-            {brand.luxury_division ? brand.luxury_division : "None"}
-          </span>
-        </p>
+        {brand.luxury_division && (
+          <p className="text-gray-300">
+            Luxury Division:{" "}
+            <span className="font-medium">{brand.luxury_division}</span>
+          </p>
+        )}
       </li>
+
       <p className="text-sm text-gray-300 font-bold mt-auto whitespace-nowrap">
         {formattedDate(brand.createdAt)}
       </p>
+
+      {showDeleteButton && (
+        <button onClick={() => removeCar(brand.id as number)} className="mt-4">
+          Delete
+        </button>
+      )}
     </ul>
   );
 }

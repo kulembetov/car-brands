@@ -17,5 +17,25 @@ body {
 }
 
 button {
-  @apply bg-gradient-to-r from-purple-700 to-indigo-700 text-white font-semibold rounded-lg px-4 py-2 transition-all duration-300 hover:scale-105 hover:shadow-lg;
+  @apply bg-white/10 text-white font-semibold rounded-xl px-4 py-2 transition-all duration-300 hover:scale-105 hover:shadow-lg;
+}
+
+input {
+  @apply w-full bg-white/10 text-white placeholder-gray-300 outline-none focus:outline-none border border-white/20 rounded-xl px-4 py-2 focus:ring-2 focus:ring-indigo-400 transition-all duration-300;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.4;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 1.5s infinite;
 }
